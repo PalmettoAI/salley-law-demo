@@ -34,6 +34,8 @@
   .nav-links a:hover{color:var(--amber-light)}
   .nav-cta{background:var(--amber);color:var(--forest);padding:10px 24px;font-size:.82rem;font-weight:700;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:background .2s}
   .nav-cta:hover{background:var(--amber-light)}
+  .nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+  .nav-hamburger span{display:block;width:24px;height:2px;background:var(--amber);transition:all .3s;}
 
   .hero{background:var(--forest);min-height:90vh;position:relative;overflow:hidden;display:flex;align-items:stretch}
   .hero::before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background-image:linear-gradient(90deg,rgba(200,148,58,.05) 1px,transparent 1px),linear-gradient(180deg,rgba(200,148,58,.03) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
@@ -155,7 +157,9 @@
     .consult-cta{padding:60px 30px}
     footer{grid-template-columns:1fr;padding:40px 30px;gap:32px}
     nav{padding:0 20px}
+    .nav-hamburger{display:flex;}
     .nav-links{display:none}
+    .nav-links.nav-open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--forest);padding:1.5rem 2rem;border-top:1px solid rgba(200,148,58,.25);gap:1.2rem;z-index:99;}
     .trust-bar{padding:16px 30px;gap:24px}
   }
 </style>
@@ -174,6 +178,7 @@
     <a href="#contact">Contact</a>
     <a href="#intake" class="nav-cta">Free Consultation</a>
   </div>
+  <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <section class="hero">
@@ -233,7 +238,7 @@
   <div class="trust-item">⚖ 25+ Years in Lexington</div>
   <div class="trust-item">📞 Same-Day Response</div>
   <div class="trust-item">🤝 Free Consultations</div>
-  <div class="trust-item">🏛 Locally Owned & Operated</div>
+  <div class="trust-item">🏛 Locally Owned &amp; Operated</div>
 </div>
 
 <section class="practice" id="practice">
@@ -241,7 +246,7 @@
   <h2 class="section-title">Practice Areas</h2>
   <p class="section-sub">We focus where we're strongest — giving you an attorney who knows your area of law inside and out, not a generalist who handles everything poorly.</p>
   <div class="practice-grid">
-    <div class="practice-card"><div class="practice-num">01</div><h4>Personal Injury</h4><p>Car accidents, slip & falls, wrongful death. No fees unless we win. We fight for full compensation — medical bills, lost wages, pain and suffering.</p></div>
+    <div class="practice-card"><div class="practice-num">01</div><h4>Personal Injury</h4><p>Car accidents, slip &amp; falls, wrongful death. No fees unless we win. We fight for full compensation — medical bills, lost wages, pain and suffering.</p></div>
     <div class="practice-card"><div class="practice-num">02</div><h4>Family Law</h4><p>Divorce, child custody, child support, and adoption. We protect your family's future with compassion and tenacity — especially when children are involved.</p></div>
     <div class="practice-card"><div class="practice-num">03</div><h4>Estate Planning</h4><p>Wills, trusts, powers of attorney, and probate. Plan today so your family is protected tomorrow. We make the process straightforward and affordable.</p></div>
     <div class="practice-card"><div class="practice-num">04</div><h4>Real Estate Law</h4><p>Closings, title disputes, boundary issues, and contracts. Lexington's real estate market is booming — don't sign anything without having us review it first.</p></div>
@@ -292,8 +297,8 @@
   <p class="section-sub">Our attorneys are your neighbors — they understand exactly what's at stake for Lexington County families and businesses.</p>
   <div class="team-grid">
     <div class="attorney-card"><div class="attorney-avatar">⚖</div><h4>R. Salley, Esq.</h4><div class="role">Founding Partner</div><p>25+ years serving Lexington County. Focuses on personal injury and civil litigation. Known for taking cases to trial when others won't.</p></div>
-    <div class="attorney-card"><div class="attorney-avatar">👩‍⚖️</div><h4>Associate Attorney</h4><div class="role">Family Law & Estates</div><p>Compassionate advocate for families navigating divorce and custody. Also handles estate planning for clients of all income levels.</p></div>
-    <div class="attorney-card"><div class="attorney-avatar">🏛</div><h4>Associate Attorney</h4><div class="role">Real Estate & Business</div><p>Handles hundreds of closings per year in Lexington County. Advises small businesses on contracts and employment matters.</p></div>
+    <div class="attorney-card"><div class="attorney-avatar">👩‍⚖️</div><h4>Associate Attorney</h4><div class="role">Family Law &amp; Estates</div><p>Compassionate advocate for families navigating divorce and custody. Also handles estate planning for clients of all income levels.</p></div>
+    <div class="attorney-card"><div class="attorney-avatar">🏛</div><h4>Associate Attorney</h4><div class="role">Real Estate &amp; Business</div><p>Handles hundreds of closings per year in Lexington County. Advises small businesses on contracts and employment matters.</p></div>
   </div>
 </section>
 
@@ -343,6 +348,7 @@
     });
   },{threshold:.1});
   document.querySelectorAll('.practice-card,.attorney-card').forEach(el=>observer.observe(el));
+  document.querySelector('.nav-hamburger').addEventListener('click',function(){document.querySelector('.nav-links').classList.toggle('nav-open');});
 </script>
 </body>
 </html>
